@@ -1,0 +1,46 @@
+.aboutUsContainer{
+   width: 85%;
+   min-height: 100vh;
+   margin: auto;
+   display: flex;
+   min-height: 100vh;
+}
+
+.aboutUsCol{
+    flex-basis: 48%;
+    margin: auto;
+}
+
+.aboutUsCol h1{
+    font-size: 40px;
+    position: relative;
+}
+
+.aboutUsCol h2{
+    padding-top: 25px;
+    padding-bottom: 15px;
+}
+
+.aboutUsCol p{
+    font-size: 20px;
+}
+
+
+.aboutUsCol h1::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 55px;
+    border-radius: 8px;
+    background-color: #4070f4;
+}
+
+
+@media(max-width: 800px){
+    .aboutUsContainer{
+        flex-direction:column;
+    }
+    
+}

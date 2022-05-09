@@ -1,0 +1,114 @@
+.sectionOne{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.5),rgba(4,9,30,0.7)),url("./../Asserts/cover1.jpg");
+    /*background-color: black;*/
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    font-family: 'Nunito Sans';
+}
+
+.sectionFive{
+    position: relative;
+    width: 100%;
+    background-color: #3586ff;
+    height: 200px;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sectionThree{
+    min-height: 100vh;
+    width: 100%;
+    background-color: black;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    font-family: 'Nunito Sans';
+    color: white;
+}
+
+.sectionTwo{
+    min-height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    font-family: 'Nunito Sans';
+    color: black;
+}
+.sectionFour{
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(90deg, #172fcd  0%, #880fc4 100%);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    font-family: 'Nunito Sans';
+    color: white;
+    padding-bottom: 100px;
+}
+
+.homepageContainer h1 span{
+    color: #e8502e;
+    font-family: 'Nunito Sans';
+    font-style:italic;
+}
+.homepageContainer h1{
+    margin: 10px 0px;
+}
+.homepageContainer h6{
+    font-size: 40px;
+    margin: 10px 0px;
+}
+.titleContainer{
+    display: flex;
+}
+.titleContainer h1{
+    font-size: 50px;
+}
+.typewriterContainer{
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
+.homepageContainer {
+    color: rgb(255, 255, 255);
+    font-family: 'Poppins',sans-serif;
+    transform: translate(-50%,-50%);
+    position:absolute;
+    left: 50%;
+    top: 40%;
+    font-size: 30px;
+    width: 80%;
+}
+.homepageContainer h6{
+    text-transform: uppercase;
+}
+#title{
+    color: #f3cf00;
+    font-style: normal;
+    border: none;
+}
+.homepageContainer button{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 05px 15px;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: x-large;
+    transition: transform 0.3s;
+}
+.homepageContainer button:hover{
+    transform: scale(1.4);
+}

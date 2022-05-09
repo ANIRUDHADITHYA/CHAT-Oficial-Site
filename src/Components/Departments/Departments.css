@@ -1,0 +1,88 @@
+.departmentsContainer{
+    min-height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "raleway", sans-serif;
+    cursor: pointer;
+}
+
+.departmentsContainer h1{
+    color: black;
+    font-size: 55px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.departmentsContainer h5 {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.contentCard{
+    display: flex;
+    background-color: #071e55;
+    border: 1px solid #051a4b;
+    border-radius: 1rem;
+    width: 45%;
+    margin-top: 1rem;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.contentContainer{
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: space-evenly;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contentCard i{
+    font-size: 3rem;
+    padding-top: 2.5rem;
+    padding-left: 1.5rem;
+    color: #c6daff;
+    transition: 0.5s;
+}
+
+.mainContent{
+    padding: 1.5rem;
+    
+}
+
+.mainContent h3{
+    color: white;
+    letter-spacing: 0.1rem;
+    margin: 0.3rem;
+}
+
+.mainContent p{
+    color: rgb(210, 208, 208);
+    letter-spacing: 0.01rem;
+    font-weight: 100;
+}
+
+.contentCard:hover{
+    border-bottom: 1px solid #1089d4;
+}
+
+.contentCard:hover i{
+    transform: scale(1.05);
+}
+
+@media (max-width: 770px) {
+    .contentContainer{
+        flex-direction: column;
+    }
+
+    .contentCard{
+        width: 80%;
+        margin: auto;
+    }
+}
