@@ -31,9 +31,6 @@ const Preview = () => {
     return (
             <div>
                 <div>
-                    {/*<section className="blogs-navbar">
-                        <Navbar colors={true} />
-                    </section>*/}
     
                     <main id="site-main">
     
@@ -42,9 +39,6 @@ const Preview = () => {
                             <article id="post">
     
                                 <div className="headings text-center">
-                                    {/*<div className="category">
-                                        <Link to="#" className="nav-link">Travel</Link>
-                                    </div>*/}
     
                                     <div className="title">
                                         <h2 className="text-title text-dark display-1">{blogValues.title}</h2>
@@ -78,17 +72,6 @@ const Preview = () => {
                             </article>
     
                             <div className="post-footer mb-3">
-                                {/*<div className="hashtag">
-                                    <div className="post-tags d-flex flex-wrap justify-content-center">
-                                    {
-                                        blogData.hashtags.map((tag, index) => (
-                                            
-                                            tag.category && <Link key={index} className="nav-link btn bg-light" to="#">{tag.category}</Link>
-                                            
-                                        ))
-                                    }
-                                    </div>
-                                </div>*/}
     
                                 <div className="post-author text-center">
                                     <div className="author-avatar">
@@ -102,71 +85,10 @@ const Preview = () => {
                                             {blogValues.bio}
                                         </p>
     
-                                        {/*
-                                            //Social Media Accounts of Blogger
-                                        
-                                        <div className="post-tags d-flex flex-wrap justify-content-center">
-                                            <Link to="#" className="nav-link"><i className="fab fa-facebook-f"></i></Link>
-                                            <Link to="#" className="nav-link"><i className="fab fa-twitter"></i></Link>
-                                            <Link to="#" className="nav-link"><i className="fab fa-instagram"></i></Link>
-                                            <Link to="#" className="nav-link"><i className="fab fa-dribbble"></i></Link>
-                                        </div>*/}
                                     </div>
     
                                 </div>
-    
-                                {/*<div className="post-realted py-2">
-                                    <div className="row justify-content-center">
-                                        <div className="prev">
-                                            <div className="py-2">
-                                                <Link to="#" className="display-2 text-dark">
-                                                    <i className="fas fa-chevron-left"></i>
-                                                    Previous Post
-                                                </Link>
-                                            </div>
-                                            <article className="article text-center">
-                                                <div className="d-flex">
-                                                    <Link to="#">
-                                                        <img src={"assets/img9"} className="object-fit" alt="" />
-                                                    </Link>
-                                                    <div className="cart-body px-1">
-                                                        <div className="category">
-                                                            <Link to="#" className="link text-primary text-secondary">Fashion</Link>
-                                                        </div>
-                                                        <Link to="#" className="text-title display-1 text-dark">
-                                                            Looking for some feedback for this rejected track
-                                                            technology
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div className="next text-right">
-                                            <div className="py-2">
-                                                <Link to="#" className="display-2 text-dark">
-                                                    Next Post
-                                                    <i className="fas fa-chevron-right"></i>
-                                                </Link>
-                                            </div>
-                                            <article className="article text-center">
-                                                <div className="d-flex">
-                                                    <div className="cart-body px-1">
-                                                        <div className="category">
-                                                            <Link to="#" className="link text-primary text-secondary">Fashion</Link>
-                                                        </div>
-                                                        <Link to="#" className="text-title display-1 text-dark">
-                                                            Looking for some feedback for this rejected track
-                                                            technology
-                                                        </Link>
-                                                    </div>
-                                                    <Link to="#">
-                                                        <img src={"assets/img8"} className="object-fit" alt="" />
-                                                    </Link>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                    </div>*/}                         
+                     
     
                             </div>
     
@@ -174,7 +96,6 @@ const Preview = () => {
     
                         
                     </main>
-                    {/*<section className="sectionFive"><Footer/></section>*/}
                 </div>
     
             </div>

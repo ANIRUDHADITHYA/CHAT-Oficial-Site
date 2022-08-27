@@ -11,7 +11,7 @@ const UserAuthContext = createContext();
 export function UserAuthContextProvider ({children}){
     const [user, setUser] = useState("")
     const [userDetails, setUserDetails] = useState()
-    const [userBlogs, setUserBlogs] = useState()
+    
     
     function logIn(email, password) {
         console.log("logged in")
@@ -19,7 +19,6 @@ export function UserAuthContextProvider ({children}){
     }
 
     function logOut() {
-        localStorage.clear()
         return signOut(auth)
     }
     
@@ -53,24 +52,7 @@ export function UserAuthContextProvider ({children}){
         
     },[user])
 
-    useEffect(()=>{
-        const getBlogs = async () => {
-            try {
-                const blogQuery = query(collection(db, "Blogs"), where("user_id", "==", userDetails.user_id));
-                const blogs = await getDocs(blogQuery);
-                if (blogs.docs.length > 0 ){
-                    setUserBlogs(blogs.docs.map((blog)  => ({...blog.data()})))
-                    localStorage.setItem("userBlogs", JSON.stringify(userBlogs))
-                }
-            } catch(error){
-                console.log(error)
-            }
-        }
-        getBlogs()
-    }, [userDetails])   
-        
-
-    return <UserAuthContext.Provider value={{user, userDetails, userBlogs, logIn, signOut, logOut}}>{children}</UserAuthContext.Provider>
+    return <UserAuthContext.Provider value={{user, userDetails, logIn, signOut, logOut}}>{children}</UserAuthContext.Provider>
     
 }
 

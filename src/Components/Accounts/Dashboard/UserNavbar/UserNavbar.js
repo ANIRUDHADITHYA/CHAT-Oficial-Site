@@ -47,7 +47,7 @@ const UserNavbar = () =>{
                             </Link>
                         </li>
                         <li>
-                            <Link to="/dashboard/createBlog">
+                            <Link to="/dashboard/create-blog">
                                 <i class="fas fa-solid fa-plus"></i>
                                 <span className="user-nav-item">Create Blog</span>
                             </Link>
@@ -59,7 +59,7 @@ const UserNavbar = () =>{
                             </Link>
                         </li>
                         <li>
-                            <Link to="#">
+                            <Link to="/dashboard/view-blogs">
                                 <i class="fas fa-solid fa-eye"></i>
                                 <span className="user-nav-item">View Blogs</span>
                             </Link>

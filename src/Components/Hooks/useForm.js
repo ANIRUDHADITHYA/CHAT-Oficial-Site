@@ -1,17 +1,20 @@
 import {useEffect, useState} from "react";
 import ValidateTwo from "../Utils/ValidateTwo";
+import ValidateBlog from "../Utils/ValidateBlog";
 import {storage, db} from "./../../firebase-config";
 import { setDoc , doc } from "firebase/firestore";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { useBlogDetails } from "./../Accounts/ContextAPI/BlogContext";
+import {useNavigate} from "react-router-dom"
 
 
 
 
 const useForm = (Validate) => {
 
-    const imageListRef = ref(storage, `images/`)
-
-
+    const navigate = useNavigate();
+    const imageListRef = ref(storage, `images/`);
+    const { blogsData } = useBlogDetails();
     const [values, setValues] = useState({
 
         first_name: "",
@@ -111,24 +114,9 @@ const useForm = (Validate) => {
         }
     },[errorsTwo])
 
-    // createBlog functions
 
-    /*const handleSubBodyAdd = () => {
-        blogValues.body.length === 0 ? setBlogValues({ ...blogValues, body: [{ subBody: "" }] }) : setBlogValues({ ...blogValues, body: [...blogValues.body, { subBody: "" }] })
-        //console.log(serviceList)
-    }
-    const handleSubBodyRemove = (index) => {
-        const list = [...blogValues.body]
-        list.splice(index, 1)
-        setBlogValues({ ...blogValues, body: list })
-    }
-
-    const handleSubBodyChange = (e, index) => {
-        const { name, value } = e.target
-        const list = [...blogValues.body];
-        list[index][name] = value;
-        setBlogValues({ ...blogValues, body: list })
-    }*/
+    const [ blogError, setBlogError ] = useState({});
+    const [ isBlogSubmit, setIsBlogSubmit ] = useState(false);
 
     const handleBlogChange = (event) => {
         const {name,value} = event.target
@@ -141,15 +129,12 @@ const useForm = (Validate) => {
     }
 
 
-    const handlePreview = () => {
-        localStorage.setItem("tempBlog", JSON.stringify(blogValues))
-    }
-
     const setImage = () => {
         listAll(imageListRef).then((response) => {
             response.items.forEach((item) => {
                 getDownloadURL(item).then((url) => {
-                    if (item.name === blogValues.blog_id) {                        
+                    if (item.name === blogValues.blog_id) {      
+                                     
                         setBlogValues({...blogValues, image:url})
                     }
                 })
@@ -159,18 +144,55 @@ const useForm = (Validate) => {
     
 
     const setBlogID = () => {
-        return "blog"+ (Object.keys(JSON.parse(localStorage.getItem("blogsData"))).length+1);
+        blogValues.blog_id = "blog"+ (Object.keys(blogsData).length+1);
     }
+    
 
     const setDate = () => {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var today = new Date();
-            return today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear()+' '+today.getHours()+':'+today.getMinutes();
+        blogValues.date = months[today.getMonth()] + " " + today.getDate()+', '+today.getFullYear();
+        
     }
+
+    const setBlogDefaults = (data) => {
+        setBlogID();
+        setDate();
+        setBlogValues({...blogValues, ...data})
+        console.log(blogValues)
+    }
+
+    const handleSubmitBlog = (event) => {
+        event.preventDefault();
+        console.log("submit requested")
+        setBlogError(ValidateBlog(blogValues))
+        setIsBlogSubmit(true)
+    }
+
+    useEffect(()=>{
+
+        const addToRequest = async () => {
+            console.log("submit handled")
+            console.log(blogValues)
+            try {
+                await setDoc(doc(db, "Blogs", blogValues.blog_id), blogValues);
+                setIsBlogSubmit(true)
+                navigate("/dashboard")
+            }catch(err){
+                console.log(errors)
+            }
+        }
+        if(Object.keys(blogError).length === 0 && isBlogSubmit){
+            console.log("submit check")
+            addToRequest();         
+        }
+    },[blogError])
+
 
 
    
     return { handleChange, values, handleNext, handleBack, handleSubmit, errors, errorsTwo, nextPage, submit, 
-        setBlogID, setDate, blogValues, handlePreview, handleBlogChange, setImage}
+        setDate, setBlogID,blogValues, handleSubmitBlog, handleBlogChange, setImage, blogError, setBlogDefaults}
 }
 
 export default useForm;

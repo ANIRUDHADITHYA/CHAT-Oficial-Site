@@ -3,13 +3,14 @@ import { useUserAuth } from "./UserAuthContext";
 
 
 const Loader = ({children}) => {
-    const { userDetails, userBlogs } = useUserAuth();
+    const { userDetails } = useUserAuth();
     const [loaded, setLoaded] = useState(false);
     useEffect(()=>{
-        if(userDetails && userBlogs){
+        if(userDetails){
             setLoaded(true)
         }
-    },[userBlogs])
+
+    },[userDetails])
     if(loaded){
         return children
     } else {

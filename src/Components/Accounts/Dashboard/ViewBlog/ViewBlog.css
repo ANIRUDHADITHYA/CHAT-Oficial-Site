@@ -1,0 +1,17 @@
+.blogCardFlex{
+    display: flex;
+    justify-content: space-between;
+}
+.blogCardFlex p{
+    font-size: 13px;
+}
+.blogStatus.active{
+    background-color: green;
+    border: 1px solid black;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+.blogStatus{
+    background-color: rgb(179, 2, 2);
+}
