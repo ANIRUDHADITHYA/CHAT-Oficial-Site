@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import './Navbar.css';
+import { useUserAuth } from "../Accounts/ContextAPI/UserAuthContext";
 
 const Navbar = (props) => {
 
-    
+    const { user } = useUserAuth();
     const [click,setClick] = useState(false);    
     const closeMobileMenu = () => {
         setClick(false);
@@ -54,7 +55,7 @@ const Navbar = (props) => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                        <Link to="/blogs" className="nav-links" onClick={closeMobileMenu}>
                             Blogs
                         </Link>
                     </li>
@@ -69,8 +70,8 @@ const Navbar = (props) => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/" className="nav-links" onClick={contactUsScroll}>
-                            Account
+                        <Link to={user? "/dashboard": "/account"} className="nav-links" onClick={closeMobileMenu}>
+                            {user? user.email : "Account"}
                         </Link>
                     </li>
                 </ul>

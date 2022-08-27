@@ -1,0 +1,76 @@
+.user-navbar{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background: #ffff;
+    width: 280px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+    transform:translateX(-100) ;
+}
+.user-navbar ul{
+    padding-top: 10px;
+}
+
+.home-body .profile-image{
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 0px;
+}
+.home-body .profile-image img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.home-body .profile-image span{
+    font-weight: bold;
+    padding-left: 2px;
+    font-size: 1vw;
+    text-transform: uppercase;
+
+}
+.user-navbar .fas{
+    position: relative;
+    width: 50px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.user-nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+    
+}
+
+.home-body .logout{
+    position: absolute;
+    bottom: 50px;
+}
+#user-navbar-active{
+    width: 0;
+}
+
+.close-navabar i{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    padding-top: 15px;
+    color: rgb(181, 42, 42);
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.open-navabar i{
+    margin-right: 20px;
+    margin-top: 30px;
+    margin-left: 20px;
+    color: black;
+    font-size: 20px;
+
+}

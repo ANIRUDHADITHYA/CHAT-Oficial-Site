@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./HomePage.css"
-import Typewriter from 'typewriter-effect';
 import AboutUs from "../AboutUs/AboutUs";
 import Testimonials from "../Testimonials/Testimonials";
 import Departments from "../Departments/Departments";
 import Footer from "../Footer/Footer";
+import Typewriter from 'typewriter-effect';
 
 const HomePage =() =>{
 
@@ -17,15 +17,15 @@ const HomePage =() =>{
                 <div className="homepageContainer">
                     <h6>Get Started with</h6>
                     <div className="titleContainer">
-                        <h1><span id="title">CHAT</span> a </h1>
+                        <h1><span id="title">CHAT</span></h1>
                         <h1 className="typewriterContainer">
-                        <Typewriter
+                        {/*<Typewriter
                                 options={{
                                     strings: ['Community of Hackers and Technologiests'],
                                     autoStart: true,
                                     loop: true,
                                 }}
-                            />
+                            />*/}
                         </h1>
                     </div>
                     <Link to='/register'><button>APPLY NOW</button></Link>
