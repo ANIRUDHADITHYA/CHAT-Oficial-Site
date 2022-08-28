@@ -10,32 +10,6 @@ const Blog = () => {
 
     const { blog_id } = useParams();
     const { blogsData } = useBlogDetails();
-    /*const [blogData, setBlogData] = useState({
-
-        user_id: "",
-        first_name: "",
-        bio: "",
-        profile_image: "",
-        blog_id: "",
-        title: "",
-        date: "",
-        body: "",
-        hashtags: "",
-        likes: "",
-
-    });
-
-    useEffect(() => {
-        const getBlogData = async () => {
-            const blogsData = JSON.parse(localStorage.getItem("blogsData"))
-            const filterData = blogsData.filter(blog => blog.blog_id === blog_id)
-            setBlogData(filterData[0])
-        }
-        getBlogData()
-    }, [])*/
-
-
-
 
     return (
         <div>

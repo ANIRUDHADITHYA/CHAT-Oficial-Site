@@ -11,11 +11,10 @@ import { useBlogDetails } from "../../ContextAPI/BlogContext";
 
 const AddBlog = () => {
 
-    const { blogValues, blogError, setBlogID, setDate, setBlogDefaults,  handleSubmitBlog, handleBlogChange, setImage } = useForm();
+    const { blogValues, blogError, setBlogDefaults,  handleSubmitBlog, handleBlogChange, setImage } = useForm();
     const { userDetails } = useUserAuth();
     const [imageUpload, setImageUpload] = useState(null);
     const imageRef = ref(storage, `images/${blogValues.blog_id}`)
-    const { userBlogs } = useBlogDetails();
 
     const uploadImage = (event) => {
         event.preventDefault();

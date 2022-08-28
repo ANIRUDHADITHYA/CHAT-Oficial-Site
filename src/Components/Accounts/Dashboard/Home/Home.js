@@ -44,7 +44,7 @@ const Home = () => {
                             <i class="fas fa-solid fa-address-card"></i>
                             <h2>Delete Blog</h2>
                             <p>Delete your Posted or Active Blogs</p>
-                            <Link to="#"><h5>Delete Blog</h5></Link>
+                            <Link to="/dashboard/delete-blogs"><h5>Delete Blog</h5></Link>
                         </div>
 
                         <div className="links-card">
@@ -62,8 +62,9 @@ const Home = () => {
                             {userBlogs ? userBlogs.map((blog, index) => (
 
                                 blog.blog_status &&
-                                <Link to={"/blogs/" + blog.blog_id}>
-                                    <Card key={index} className="blogs-box" sx={{ maxWidth: 345 }}>
+                                
+                                    <Card key={index} className="blogs-box" >
+                                        <Link to={"/blogs/" + blog.blog_id}>
                                         <CardActionArea className="recent-blog-links">
                                             <CardMedia
                                                 component="img"
@@ -72,13 +73,13 @@ const Home = () => {
                                                 alt={blog.blog_id}
                                             />
                                             <CardContent>
-                                                <Typography gutterBottom variant="h5" component="div">
-                                                    <h1>{blog.title}</h1>
+                                                <Typography gutterBottom variant="h5" component="div" className="blog-title">
+                                                    <h5>{blog.title}</h5>
                                                 </Typography>
                                             </CardContent>
                                         </CardActionArea>
+                                        </Link>
                                     </Card>
-                                </Link>
 
 
                             )) :

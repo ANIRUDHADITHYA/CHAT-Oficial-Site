@@ -12,6 +12,8 @@ import Blog from './Components/Blogs/Blog/Blog';
 import AddBlog from './Components/Accounts/Dashboard/AddBlog/AddBlog';
 import Loader from './Components/Accounts/ContextAPI/Loader';
 import ViewBlog from './Components/Accounts/Dashboard/ViewBlog/ViewBlog';
+import PreviewBlogs from './Components/Accounts/Dashboard/PreviewBlog/PreviewBlogs';
+import DeleteBlog from './Components/Accounts/Dashboard/DeleteBlog/DeleteBlog';
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
               <Route exact path='/dashboard' element={<ProtectedRoute><Loader><Home /></Loader></ProtectedRoute>} />
               <Route exact path="/dashboard/create-blog" element={<ProtectedRoute><Loader><AddBlog /></Loader></ProtectedRoute>} />
               <Route exact path="/dashboard/view-blogs" element={<ProtectedRoute><Loader><ViewBlog /></Loader></ProtectedRoute>} />
+              <Route exact path="/dashboard/delete-blogs" element={<ProtectedRoute><Loader><DeleteBlog /></Loader></ProtectedRoute>} />
+              <Route exact path="/preview-blog/:blog_id" element={<ProtectedRoute><Loader><PreviewBlogs /></Loader></ProtectedRoute>} />
 
               <Route exact path='/register' element={<Register />} />
 

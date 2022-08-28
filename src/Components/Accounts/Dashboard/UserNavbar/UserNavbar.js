@@ -53,7 +53,7 @@ const UserNavbar = () =>{
                             </Link>
                         </li>
                         <li>
-                            <Link to="#">
+                            <Link to="/dashboard/delete-blogs">
                                 <i class="fas fa-solid fa-trash"></i>
                                 <span className="user-nav-item">Delete Blog</span>
                             </Link>

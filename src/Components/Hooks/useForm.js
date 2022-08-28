@@ -5,7 +5,8 @@ import {storage, db} from "./../../firebase-config";
 import { setDoc , doc } from "firebase/firestore";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { useBlogDetails } from "./../Accounts/ContextAPI/BlogContext";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import { v4 } from 'uuid';
 
 
 
@@ -117,6 +118,7 @@ const useForm = (Validate) => {
 
     const [ blogError, setBlogError ] = useState({});
     const [ isBlogSubmit, setIsBlogSubmit ] = useState(false);
+    
 
     const handleBlogChange = (event) => {
         const {name,value} = event.target
@@ -144,7 +146,7 @@ const useForm = (Validate) => {
     
 
     const setBlogID = () => {
-        blogValues.blog_id = "blog"+ (Object.keys(blogsData).length+1);
+        blogValues.blog_id = "blog"+"-"+v4();
     }
     
 
@@ -192,7 +194,7 @@ const useForm = (Validate) => {
 
    
     return { handleChange, values, handleNext, handleBack, handleSubmit, errors, errorsTwo, nextPage, submit, 
-        setDate, setBlogID,blogValues, handleSubmitBlog, handleBlogChange, setImage, blogError, setBlogDefaults}
+        blogValues, handleSubmitBlog, handleBlogChange, setImage, blogError, setBlogDefaults}
 }
 
 export default useForm;

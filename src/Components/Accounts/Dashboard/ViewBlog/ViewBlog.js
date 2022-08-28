@@ -24,7 +24,7 @@ const ViewBlog = () => {
                     <div>
                         <div className="blog-card-section">
                             {userBlogs ? userBlogs.map((blog, index) => (
-                                <Link to={"/blogs/" + blog.blog_id}>
+                                <Link to={"/preview-blog/" + blog.blog_id}>
                                     <Card key={index} className="blogs-box" sx={{ maxWidth: 345 }}>
                                         <CardActionArea className="recent-blog-links">
                                             <CardMedia
