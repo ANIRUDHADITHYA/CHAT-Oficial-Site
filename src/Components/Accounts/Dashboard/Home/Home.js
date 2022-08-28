@@ -9,11 +9,13 @@ import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 import UserNavbar from "./../UserNavbar/UserNavbar"
 import { useEffect, useState } from "react"
+import { useUserAuth } from "../../ContextAPI/UserAuthContext";
 
 const Home = () => {
 
     const { userBlogs } = useBlogDetails();
     const [recentBlogs, setRecentBlogs] = useState([])
+    const { userDetails } = useUserAuth();
 
     useEffect(() => {
         const getRecentBlogs = () => {
@@ -62,7 +64,7 @@ const Home = () => {
                             <i class="fas fa-solid fa-address-card"></i>
                             <h2>Profile Changes</h2>
                             <p>Add Bio, Change Password, DP</p>
-                            <Link to="#"><h5>Goto Profile</h5></Link>
+                            <Link to={"/"+userDetails.user_id}><h5>Goto Profile</h5></Link>
                         </div>
 
 

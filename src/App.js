@@ -14,6 +14,7 @@ import Loader from './Components/Accounts/ContextAPI/Loader';
 import ViewBlog from './Components/Accounts/Dashboard/ViewBlog/ViewBlog';
 import PreviewBlogs from './Components/Accounts/Dashboard/PreviewBlog/PreviewBlogs';
 import DeleteBlog from './Components/Accounts/Dashboard/DeleteBlog/DeleteBlog';
+import Profile from './Components/Accounts/Dashboard/Profile/Profile';
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
               <Route exact path="/dashboard/view-blogs" element={<ProtectedRoute><Loader><ViewBlog /></Loader></ProtectedRoute>} />
               <Route exact path="/dashboard/delete-blogs" element={<ProtectedRoute><Loader><DeleteBlog /></Loader></ProtectedRoute>} />
               <Route exact path="/preview-blog/:blog_id" element={<ProtectedRoute><Loader><PreviewBlogs /></Loader></ProtectedRoute>} />
+              <Route exact path="/:user_id" element={<ProtectedRoute><Loader><Profile/></Loader></ProtectedRoute>} />
+              
 
               <Route exact path='/register' element={<Register />} />
 

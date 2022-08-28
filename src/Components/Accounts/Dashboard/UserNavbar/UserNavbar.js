@@ -65,7 +65,7 @@ const UserNavbar = () =>{
                             </Link>
                         </li>
                         <li>
-                            <Link to="#">
+                            <Link to={"/"+userDetails.user_id}>
                                 <i class="fas fa-solid fa-address-card"></i>
                                 <span className="user-nav-item">Profile</span>
                             </Link>

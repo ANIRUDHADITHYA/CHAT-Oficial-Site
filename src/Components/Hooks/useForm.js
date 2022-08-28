@@ -2,9 +2,9 @@ import {useEffect, useState} from "react";
 import ValidateTwo from "../Utils/ValidateTwo";
 import ValidateBlog from "../Utils/ValidateBlog";
 import {storage, db} from "./../../firebase-config";
-import { setDoc , doc } from "firebase/firestore";
+import { setDoc , doc, collection, updateDoc } from "firebase/firestore";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
-import { useBlogDetails } from "./../Accounts/ContextAPI/BlogContext";
+import { useUserAuth } from "./../Accounts/ContextAPI/UserAuthContext";
 import {useNavigate} from "react-router-dom";
 import { v4 } from 'uuid';
 
@@ -13,9 +13,9 @@ import { v4 } from 'uuid';
 
 const useForm = (Validate) => {
 
-    const navigate = useNavigate();
-    const imageListRef = ref(storage, `images/`);
-    const { blogsData } = useBlogDetails();
+    //create user form
+
+   
     const [values, setValues] = useState({
 
         first_name: "",
@@ -39,20 +39,7 @@ const useForm = (Validate) => {
         profile_image: "",
         
     })
-    const [blogValues, setBlogValues] = useState({
-        bio: "",
-        blog_id: "",
-        blog_status: false,
-        image: "",
-        body: "",
-        hashtags: "",
-        date: "",
-        first_name: "",
-        likes: 0,
-        profile_image: "",
-        title: "",
-        user_id: "",
-    })
+    
 
     const [errors, setErrors] = useState({});
     
@@ -115,6 +102,23 @@ const useForm = (Validate) => {
         }
     },[errorsTwo])
 
+    //create blog form
+
+    const [blogValues, setBlogValues] = useState({
+        blog_id: "",
+        blog_status: false,
+        image: "",
+        body: "",
+        hashtags: "",
+        date: "",
+        first_name: "",
+        likes: 0,
+        title: "",
+        user_id: "",
+    })
+
+    const navigate = useNavigate();
+    const imageListRef = ref(storage, `images/`);
 
     const [ blogError, setBlogError ] = useState({});
     const [ isBlogSubmit, setIsBlogSubmit ] = useState(false);
@@ -191,10 +195,55 @@ const useForm = (Validate) => {
     },[blogError])
 
 
+    //update Form
+
+    const [ profileValues, setProfileValues ] = useState({
+        bio: "",
+        profile_image: "",
+    })
+
+    const profileImageRef = ref(storage, `profile/`);
+    const {userDetails} = useUserAuth();
+    
+    const setProfileImage = () => {
+        listAll(profileImageRef).then((response) => {
+            response.items.forEach((item) => {
+                getDownloadURL(item).then((url) => {
+                    if (item.name === userDetails.user_id) {      
+                                     
+                        setProfileValues({...profileValues, profile_image:url})
+                    }
+                })
+            })
+        })
+    }
+
+    const handleProfileChange = (event) =>{
+
+        const {name,value} = event.target
+        setProfileValues((preValues) => {
+            return {
+                ...preValues,
+                [name]:value,
+            }
+        })
+
+    }
+    const setProfileDefaults = (data) => {
+        setProfileValues({...profileValues, ...data})
+    }
+    const handleProfileUpdate = async (event) => {
+        event.preventDefault();
+        await updateDoc(doc(db, "Users", userDetails.user_id), profileValues)
+        navigate("/dashboard")
+    }
+
 
    
     return { handleChange, values, handleNext, handleBack, handleSubmit, errors, errorsTwo, nextPage, submit, 
-        blogValues, handleSubmitBlog, handleBlogChange, setImage, blogError, setBlogDefaults}
+        blogValues, handleSubmitBlog, handleBlogChange, setImage, blogError, setBlogDefaults,
+        profileValues, setProfileImage, handleProfileChange, handleProfileUpdate, setProfileDefaults
+    }
 }
 
 export default useForm;

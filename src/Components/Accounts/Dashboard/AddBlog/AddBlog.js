@@ -5,7 +5,6 @@ import { useUserAuth } from "../../ContextAPI/UserAuthContext";
 import useForm from "./../../../Hooks/useForm";
 import { storage } from "./../../../../firebase-config";
 import { ref, uploadBytes } from "firebase/storage";
-import { useBlogDetails } from "../../ContextAPI/BlogContext";
 
 
 
@@ -31,9 +30,7 @@ const AddBlog = () => {
 
     useEffect(() => {
         const data = {
-            bio: userDetails.bio,
             first_name: userDetails.first_name,
-            profile_image: userDetails.profile_image,
             user_id: userDetails.user_id,
         }
         setBlogDefaults(data)
@@ -41,7 +38,6 @@ const AddBlog = () => {
     }, [])
 
     const handleKeyDown = (e) => {
-        console.log(e.target.scrollHeight)
         if (e.target.scrollHeight > 200) {
             e.target.style.height = 'inherit';
             e.target.style.height = `${e.target.scrollHeight}px`;

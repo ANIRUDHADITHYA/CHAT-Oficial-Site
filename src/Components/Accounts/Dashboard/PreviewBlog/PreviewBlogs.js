@@ -2,11 +2,14 @@ import { Link, useParams } from "react-router-dom"
 import Navbar from "../../../Navbar/Navbar";
 import Footer from "../../../Footer/Footer";
 import { useBlogDetails } from "../../ContextAPI/BlogContext";
+import { useUserAuth } from "../../ContextAPI/UserAuthContext";
+
 
 const PreviewBlogs = () => {
 
     const { blog_id } = useParams();
     const { userBlogs } = useBlogDetails();
+    const { userDetails } = useUserAuth();
     
     return (
         <div>
@@ -61,14 +64,14 @@ const PreviewBlogs = () => {
 
                                 <div className="post-author text-center">
                                     <div className="author-avatar">
-                                        <img src={blog.profile_image} className="rounded" alt="" />
+                                        <img src={userDetails.profile_image} className="rounded" alt="" />
                                     </div>
 
                                     <div className="author-info py-2">
-                                        <h3 className="text-dark">{blog.first_name}</h3>
+                                        <h3 className="text-dark">{userDetails.first_name}</h3>
 
                                         <p className="text-secondary secondary-title">
-                                            {blog.bio}
+                                            {userDetails.bio}
                                         </p>
                                     </div>
 
