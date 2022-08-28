@@ -1,4 +1,4 @@
-/*.warning-card{
+.warning-card{
     display: flex;
     align-items: center;
     margin: auto;
@@ -35,9 +35,14 @@
     color: white;
     background-color: rgb(167, 0, 0);
     display: flex;
+    transition: 0.3s;
+
+}
+.deleteBlogButton:hover{
+    background-color: rgb(39, 71, 131);
 
 }
 
 .blog-card-container{
     display: flex;
-}*/
+}

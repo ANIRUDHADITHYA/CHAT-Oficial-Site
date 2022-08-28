@@ -98,9 +98,11 @@
 
 }
 
+.blog-card-wrap{
+    width: 30%;
+}
 
 .blogs-box{
-    width: 30%;
     padding: 10px;
     margin-top: 10px;
     background: #fff;
@@ -166,7 +168,6 @@
 }
 .blog-card-section{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     padding: 0px 10px;
 }
@@ -184,3 +185,6 @@
     color: #575757;
     text-transform: none;
 }
+
+
+

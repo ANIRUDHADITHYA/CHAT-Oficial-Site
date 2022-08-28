@@ -24,16 +24,17 @@ const ViewBlog = () => {
                     <div>
                         <div className="blog-card-section">
                             {userBlogs ? userBlogs.map((blog, index) => (
-                                <Link to={"/preview-blog/" + blog.blog_id}>
-                                    <Card key={index} className="blogs-box" sx={{ maxWidth: 345 }}>
-                                        <CardActionArea className="recent-blog-links">
-                                            <CardMedia
+                                <Link to={"/preview-blog/" + blog.blog_id} className="blog-card-wrap">
+                                <Card key={index} className="blogs-box">
+                                    
+                                    <CardActionArea className="recent-blog-links">
+                                    <CardMedia
                                                 component="img"
                                                 height="140"
                                                 image={blog.image}
                                                 alt={blog.blog_id}
                                             />
-                                            <CardContent>
+                                        <CardContent>
                                                 <Typography gutterBottom variant="h5" component="div">
                                                     <h1>{blog.title}</h1>
                                                 </Typography>
@@ -48,8 +49,9 @@ const ViewBlog = () => {
                                                     </Typography>
                                                 </div>
                                             </CardContent>
-                                        </CardActionArea>
-                                    </Card>
+                                    </CardActionArea>
+                                    
+                                </Card>
                                 </Link>
 
                             )) :

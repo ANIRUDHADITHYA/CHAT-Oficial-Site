@@ -7,11 +7,12 @@
 }
 .blogStatus.active{
     background-color: green;
+    
+}
+.blogStatus{
+    background-color: rgb(179, 2, 2);
     border: 1px solid black;
     color: white;
     padding: 2px 5px;
     border-radius: 5px;
-}
-.blogStatus{
-    background-color: rgb(179, 2, 2);
 }

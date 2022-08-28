@@ -8,18 +8,29 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 import UserNavbar from "./../UserNavbar/UserNavbar"
+import { useEffect, useState } from "react"
 
 const Home = () => {
 
     const { userBlogs } = useBlogDetails();
-      
+    const [recentBlogs, setRecentBlogs] = useState([])
+
+    useEffect(() => {
+        const getRecentBlogs = () => {
+            setRecentBlogs(userBlogs.slice(Math.max(userBlogs.length - 3, 0)))
+        }
+        if(userBlogs){
+            getRecentBlogs();
+        }
+
+    },[userBlogs])
 
     return (
-        
+
         <div className="home-body">
-            
+
             <div className="home-container">
-                <UserNavbar/>
+                <UserNavbar />
                 <section className="home-main">
                     <div className="home-main-top">
                         <h1>Quick Links</h1>
@@ -59,12 +70,12 @@ const Home = () => {
                     <section className="recent-blogs">
                         <h1>Recent Blogs</h1>
                         <div className="blog-card-section">
-                            {userBlogs ? userBlogs.map((blog, index) => (
+                            {recentBlogs ? recentBlogs.map((blog, index) => (
 
                                 blog.blog_status &&
-                                
-                                    <Card key={index} className="blogs-box" >
-                                        <Link to={"/blogs/" + blog.blog_id}>
+                                <Link to={"/blogs/" + blog.blog_id} className="blog-card-wrap">
+                                    <Card key={index} className="blogs-box">
+
                                         <CardActionArea className="recent-blog-links">
                                             <CardMedia
                                                 component="img"
@@ -78,8 +89,9 @@ const Home = () => {
                                                 </Typography>
                                             </CardContent>
                                         </CardActionArea>
-                                        </Link>
+
                                     </Card>
+                                </Link>
 
 
                             )) :
