@@ -184,10 +184,7 @@ const useForm = (Validate) => {
             console.log("submit handled")
             console.log(blogValues)
             try {
-                await setDoc(doc(db, "Blogs", blogValues.blog_id), blogValues).then(()=>{
-                    window.location.reload();
-                    setIsBlogSubmit(false)
-                })
+                await setDoc(doc(db, "Blogs", blogValues.blog_id), blogValues)
             }catch(err){
                 console.log(errors)
             }
