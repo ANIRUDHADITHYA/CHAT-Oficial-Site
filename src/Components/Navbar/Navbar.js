@@ -65,11 +65,6 @@ const Navbar = (props) => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                            Contact Us
-                        </Link>
-                    </li>
-                    <li className="nav-item">
                         <Link to={user? "/dashboard": "/account"} className="nav-links" onClick={closeMobileMenu}>
                             {user? user.email : "Account"}
                         </Link>

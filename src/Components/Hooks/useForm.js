@@ -94,8 +94,11 @@ const useForm = (Validate) => {
 
         const createUser = async () => {
             values.user_id = values.roll_number.trim()
-            await setDoc(doc(db, "Users", values.user_id), values);
-            setSubmit(true);
+            await setDoc(doc(db, "Users", values.user_id), values).then(()=>{
+                window.location.reload();
+                setSubmit(false);
+            })
+            
         }
         if(Object.keys(errorsTwo).length === 0 && isSubmit){
             createUser();         
@@ -181,9 +184,10 @@ const useForm = (Validate) => {
             console.log("submit handled")
             console.log(blogValues)
             try {
-                await setDoc(doc(db, "Blogs", blogValues.blog_id), blogValues);
-                setIsBlogSubmit(true)
-                navigate("/dashboard")
+                await setDoc(doc(db, "Blogs", blogValues.blog_id), blogValues).then(()=>{
+                    window.location.reload();
+                    setIsBlogSubmit(false)
+                })
             }catch(err){
                 console.log(errors)
             }
@@ -234,8 +238,9 @@ const useForm = (Validate) => {
     }
     const handleProfileUpdate = async (event) => {
         event.preventDefault();
-        await updateDoc(doc(db, "Users", userDetails.user_id), profileValues)
-        navigate("/dashboard")
+        await updateDoc(doc(db, "Users", userDetails.user_id), profileValues).then(()=>{
+            window.location.reload();
+        })
     }
 
 
